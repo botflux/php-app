@@ -14,9 +14,9 @@ class Renderer
     public function render (string $templateName, array $context): string {
         ob_start();
 
-        require_once $this->templateFolder . DIRECTORY_SEPARATOR . $templateName;
+        include $this->templateFolder . DIRECTORY_SEPARATOR . $templateName;
 
-        $content = ob_get_contents();
+        $content = ob_get_clean();
 
         return $content;
     }

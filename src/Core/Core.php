@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Router\Router;
 use App\Router\Request;
+use App\Router\Response;
 use App\Router\Route;
 use App\Renderer\Renderer;
 
@@ -42,6 +43,9 @@ class Core {
     }
 
     public function render (string $templateName, array $context) {
-        $this->renderer->render($templateName, $context);
+        return (new Response ())
+            ->setHeader('Content-type', 'text/html; charset=utf8')
+            ->setBody($this->renderer->render($templateName, $context))
+        ;
     }
 }

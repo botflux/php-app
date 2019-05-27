@@ -29,7 +29,14 @@ class Router {
         }
 
         try {
-            $matchingRoute->getCallback ()();
+            $response = $matchingRoute->getCallback ()($request, new Response());
+
+            foreach ($response->getHeaders() as $header) {
+                header ("{$header->getName()}: {$header->getValue()}");
+            }
+
+            echo $response->getBody();
+
         } catch (\Exception $e) {
             throw $e;
         }

@@ -2,7 +2,7 @@
 
 namespace App\Router;
 
-class Request {
+class Request extends HttpBase {
     /**
      * @var string
      */

@@ -2,6 +2,9 @@
 
 namespace App\Router;
 
+/**
+ * Represents an HTTP Request
+ */
 class Request extends HttpBase {
     /**
      * @var string

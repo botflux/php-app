@@ -2,6 +2,9 @@
 
 namespace App\Router;
 
+/**
+ * Represents an HTTP Response
+ */
 class Response extends HttpBase
 {
     /**

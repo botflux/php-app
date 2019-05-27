@@ -31,17 +31,36 @@ class Core {
         $this->dependencies = $dependencies;
     }
 
+    /**
+     * Run the application
+     *
+     * @return void
+     */
     public function run () {
         $request = new Request($_SERVER);
         $this->router->execute($request);
     }
 
+    /**
+     * Add a new route for GET method
+     *
+     * @param string $route
+     * @param callable $callback
+     * @return void
+     */
     public function get (string $route, callable $callback) {
         $this->router->registerRoute(
             new Route('GET', $route, $callback)
         );
     }
 
+    /**
+     * Render the given template
+     *
+     * @param string $templateName
+     * @param array $context
+     * @return void
+     */
     public function render (string $templateName, array $context) {
         return (new Response ())
             ->setHeader('Content-type', 'text/html; charset=utf8')

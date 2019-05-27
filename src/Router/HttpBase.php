@@ -2,6 +2,9 @@
 
 namespace App\Router;
 
+/**
+ * Base class for Response and Request
+ */
 abstract class HttpBase 
 {
     /**
@@ -10,6 +13,8 @@ abstract class HttpBase
     protected $headers;
 
     /**
+     * Returns an array containing Header
+     * 
      * @return Header[]
      */
     public function getHeaders (): array {
@@ -17,6 +22,10 @@ abstract class HttpBase
     }
 
     /**
+     * Returns the header that match the passed _$name_.
+     * If there is no header found, null is returned.
+     * 
+     * @param string $name
      * @return Header|null
      */
     public function getHeader (string $name): ?Header {
@@ -28,7 +37,10 @@ abstract class HttpBase
     }
 
     /**
+     * Returns true if an header matchs the passed _$name_ otherwise false.
+     * 
      * @var string $name
+     * @return bool
      */
     public function hasHeader (string $name): bool {
         return array_reduce($this->headers, function ($prev, Header $h) use ($name) {
@@ -41,8 +53,11 @@ abstract class HttpBase
     }
 
     /**
+     * Set a header
+     * 
      * @param string $name
      * @param string $value
+     * @return self
      */
     public function setHeader (string $name, string $value): self {
         $this->headers[] = new Header($name, $value);

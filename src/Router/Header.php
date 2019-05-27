@@ -2,6 +2,9 @@
 
 namespace App\Router;
 
+/**
+ * Represents an HTTP Header
+ */
 class Header {
     /**
      * @var string

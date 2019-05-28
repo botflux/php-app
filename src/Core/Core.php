@@ -15,20 +15,22 @@ class Core {
     private $router;
 
     /**
-     * @var Renderer
+     * Application service container
+     *
+     * @var ServiceContainer
      */
-    private $renderer;
+    private $serviceContainer;
 
-    /**
-     * @var array
-     */
-    private $dependencies;
-
-    public function __construct(array $dependencies)
+    public function __construct(array $settings)
     {
-        $this->router = $dependencies['router'];
-        $this->renderer = $dependencies['renderer'];
-        $this->dependencies = $dependencies;
+        // $this->router = $dependencies['router'];
+        // $this->renderer = $dependencies['renderer'];
+        // $this->dependencies = $dependencies;
+        $this->serviceContainer = new ServiceContainer();
+        $this->router = new Router();
+        $this->serviceContainer['settings'] = function ($c) use ($settings) {
+            return $settings;
+        };
     }
 
     /**
@@ -64,7 +66,16 @@ class Core {
     public function render (string $templateName, array $context) {
         return (new Response ())
             ->setHeader('Content-type', 'text/html; charset=utf8')
-            ->setBody($this->renderer->render($templateName, $context))
+            ->setBody($this->serviceContainer['renderer']->render($templateName, $context))
         ;
+    }
+
+    /**
+     * Returns the application service container
+     *
+     * @return ServiceContainer
+     */
+    public function getContainer (): ServiceContainer {
+        return $this->serviceContainer;
     }
 }

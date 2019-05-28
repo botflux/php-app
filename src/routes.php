@@ -12,3 +12,18 @@ $app->get('/^\/$/', function (Request $request, Response $response) use ($app) {
 $app->get('/^\/about$/', function (Request $request, Response $response) use ($app) {
     return $app->render('about.phtml', []);
 });
+
+$app->get('/^\/products$/', function () use ($app) {
+    
+    $pdo = $app->getContainer()['pdo'];
+
+    $statement = $pdo->prepare('SELECT * FROM product');
+    
+    if (!$statement->execute()) {
+        return $app->render('error.phtml', []);
+    }
+
+    return $app->render('products.phtml', [
+        'products' => $statement->fetchAll(\PDO::FETCH_ASSOC)
+    ]);
+});

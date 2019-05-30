@@ -69,6 +69,13 @@ class Core {
         );
     }
 
+    /**
+     * Add a new route for every HTTP methods
+     *
+     * @param string $route
+     * @param callable $callback
+     * @return void
+     */
     public function route (string $route, callable $callback) {
         $this->router->registerRoute(
             new Route('any', $route, $callback)

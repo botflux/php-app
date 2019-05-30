@@ -34,7 +34,7 @@ class Router {
 
         // filter route that matchs the request method
         $methodRelatedRoutes = array_filter ($this->routes, function (Route $element) use ($request) {
-            return strtolower ($element->getMethod()) === strtolower ($request->getMethod());
+            return $element->getMethod() === 'any' || strtolower ($element->getMethod()) === strtolower ($request->getMethod());
         });
 
         // find the first route that matchs the request

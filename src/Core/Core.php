@@ -69,6 +69,12 @@ class Core {
         );
     }
 
+    public function route (string $route, callable $callback) {
+        $this->router->registerRoute(
+            new Route('any', $route, $callback)
+        );
+    }
+
     /**
      * Render the given template
      *

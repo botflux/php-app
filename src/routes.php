@@ -28,6 +28,6 @@ $app->get('/^\/products$/', function () use ($app) {
     ]);
 });
 
-$app->post('/^\/$/', function (Request $request, Response $response) use ($app) {
+$app->route('/^\/$/', function (Request $request, Response $response) use ($app) {
     return $app->render('about.phtml', []);
 });

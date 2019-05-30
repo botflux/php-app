@@ -27,3 +27,7 @@ $app->get('/^\/products$/', function () use ($app) {
         'products' => $statement->fetchAll(\PDO::FETCH_ASSOC)
     ]);
 });
+
+$app->post('/^\/$/', function (Request $request, Response $response) use ($app) {
+    return $app->render('about.phtml', []);
+});

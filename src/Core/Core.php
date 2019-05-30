@@ -57,6 +57,19 @@ class Core {
     }
 
     /**
+     * Add a new route for POST method
+     *
+     * @param string $route
+     * @param callable $callback
+     * @return void
+     */
+    public function post (string $route, callable $callback) {
+        $this->router->registerRoute(
+            new Route('POST', $route, $callback)
+        );
+    }
+
+    /**
      * Render the given template
      *
      * @param string $templateName

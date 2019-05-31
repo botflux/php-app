@@ -2,6 +2,8 @@
 
 namespace App\Router;
 
+use App\Router\Exception\RouteNotFoundException;
+
 /**
  * Application router
  */
@@ -47,7 +49,7 @@ class Router {
         }, null);
 
         if (!$matchingRoute) {
-            throw new \Exception('No route found');
+            throw new RouteNotFoundException (sprintf('No route matching %s %s', $request->getMethod (), $request->getUri ()));
         }
 
         try {

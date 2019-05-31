@@ -10,7 +10,7 @@ abstract class HttpBase
     /**
      * @var Header[]
      */
-    protected $headers;
+    protected $headers = [];
 
     /**
      * Returns an array containing Header

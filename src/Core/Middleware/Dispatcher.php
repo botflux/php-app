@@ -42,7 +42,7 @@ class Dispatcher {
      * @param Response $response
      * @return void
      */
-    public function dispatch (Request $request, Response $response) {
+    public function dispatch (Request $request, Response $response): Response {
         $middleware = $this->getMiddleware();
         $this->index ++;
 

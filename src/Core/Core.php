@@ -56,6 +56,12 @@ class Core {
         $this->send($response);
     }
 
+    /**
+     * Sends the given response
+     *
+     * @param Response $response
+     * @return void
+     */
     private function send (Response $response) {
         foreach ($response->getHeaders() as $header) {
             header ("{$header->getName()}: {$header->getValue()}");
@@ -64,7 +70,13 @@ class Core {
         echo $response->getBody();
     }
 
-    public function add (callable $callback) {
+    /**
+     * Proxy to application dispatcher's add method
+     *
+     * @param callable $callback
+     * @return self
+     */
+    public function add (callable $callback): self {
         $this->dispatcher->add($callback);
         return $this;
     }

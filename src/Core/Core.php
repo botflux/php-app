@@ -53,10 +53,10 @@ class Core {
         $request = new Request($_SERVER);
         $response = $this->dispatcher->dispatch($request, new Response());
 
-        $this->send($request, $response);
+        $this->send($response);
     }
 
-    private function send (Request $request, Response $response) {
+    private function send (Response $response) {
         foreach ($response->getHeaders() as $header) {
             header ("{$header->getName()}: {$header->getValue()}");
         }

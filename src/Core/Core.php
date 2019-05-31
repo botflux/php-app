@@ -7,12 +7,19 @@ use App\Router\Request;
 use App\Router\Response;
 use App\Router\Route;
 use App\Renderer\Renderer;
+use App\Core\Middleware\Dispatcher;
+use App\Middleware\RouterMiddleware;
 
 class Core {
     /**
      * @var Router
      */
     private $router;
+
+    /**
+     * @var Dispatcher
+     */
+    private $dispatcher;
 
     /**
      * Application service container
@@ -27,6 +34,7 @@ class Core {
         // $this->renderer = $dependencies['renderer'];
         // $this->dependencies = $dependencies;
         $this->serviceContainer = new ServiceContainer();
+        $this->dispatcher = new Dispatcher();
         $this->router = new Router();
         $this->serviceContainer['settings'] = function ($c) use ($settings) {
             return $settings;
@@ -39,8 +47,26 @@ class Core {
      * @return void
      */
     public function run () {
+
+        $this->dispatcher->add(new RouterMiddleware($this->router->getRoutes()));
+
         $request = new Request($_SERVER);
-        $this->router->execute($request);
+        $response = $this->dispatcher->dispatch($request, new Response());
+
+        $this->send($request, $response);
+    }
+
+    private function send (Request $request, Response $response) {
+        foreach ($response->getHeaders() as $header) {
+            header ("{$header->getName()}: {$header->getValue()}");
+        }
+
+        echo $response->getBody();
+    }
+
+    public function add (callable $callback) {
+        $this->dispatcher->add($callback);
+        return $this;
     }
 
     /**

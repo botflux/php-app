@@ -27,44 +27,11 @@ class Router {
     }
 
     /**
-     * Execute the router
+     * Returns all routes
      *
-     * @param Request $request
-     * @return self
+     * @return array
      */
-    public function execute (Request $request) : self {
-
-        // filter route that matchs the request method
-        $methodRelatedRoutes = array_filter ($this->routes, function (Route $element) use ($request) {
-            return $element->getMethod() === 'any' || strtolower ($element->getMethod()) === strtolower ($request->getMethod());
-        });
-
-        // find the first route that matchs the request
-        $matchingRoute = array_reduce($methodRelatedRoutes, function ($prev, Route $element) use ($request) {
-            if (preg_match($element->getRoute(), $request->getUri())) {
-                return $element;
-            }
-
-            return $prev;
-        }, null);
-
-        if (!$matchingRoute) {
-            throw new RouteNotFoundException (sprintf('No route matching %s %s', $request->getMethod (), $request->getUri ()));
-        }
-
-        try {
-            $response = $matchingRoute->getCallback ()($request, new Response());
-
-            foreach ($response->getHeaders() as $header) {
-                header ("{$header->getName()}: {$header->getValue()}");
-            }
-
-            echo $response->getBody();
-
-        } catch (\Exception $e) {
-            throw $e;
-        }
-
-        return $this;
+    public function getRoutes (): array {
+        return $this->routes;
     }
 }

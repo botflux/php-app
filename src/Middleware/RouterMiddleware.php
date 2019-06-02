@@ -7,6 +7,9 @@ use App\Router\Request;
 use App\Router\Response;
 use App\Router\Exception\RouteNotFoundException;
 
+/**
+ * Router middleware
+ */
 class RouterMiddleware
 {
     /**

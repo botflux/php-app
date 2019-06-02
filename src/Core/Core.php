@@ -10,6 +10,9 @@ use App\Renderer\Renderer;
 use App\Core\Middleware\Dispatcher;
 use App\Middleware\RouterMiddleware;
 
+/**
+ * Application Core
+ */
 class Core {
     /**
      * @var Router

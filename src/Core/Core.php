@@ -53,7 +53,7 @@ class Core {
 
         $this->dispatcher->add(new RouterMiddleware($this->router->getRoutes()));
 
-        $request = new Request($_SERVER, $_POST);
+        $request = new Request($_SERVER, $_POST, $_GET);
         $response = $this->dispatcher->dispatch($request, new Response());
 
         $this->send($response);

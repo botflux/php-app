@@ -21,7 +21,12 @@ class Request extends HttpBase {
      */
     private $post;
 
-    public function __construct(array $server, array $post)
+    /**
+     * @var array
+     */
+    private $get;
+
+    public function __construct(array $server, array $post, array $get)
     {  
         $this->uri = $server['REQUEST_URI'];
         $this->method = $server['REQUEST_METHOD'];
@@ -48,6 +53,28 @@ class Request extends HttpBase {
         if (!$this->hasField($name)) return null;
 
         return $this->post[$name];
+    }
+
+    /**
+     * Returns true if a get param with name _$name_ was sent otherwise false.
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function hasQueryParam (string $name): bool {
+        return isset($this->get[$name]);
+    }
+
+    /**
+     * Returns the get param with the name _$name_.
+     *
+     * @param string $name
+     * @return void
+     */
+    public function getQueryParam (string $name) {
+        if (!$this->hasQueryParam($name)) return null;
+
+        return $this->get[$name];
     }
 
     /**

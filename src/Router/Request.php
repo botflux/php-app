@@ -16,10 +16,38 @@ class Request extends HttpBase {
      */
     private $method;
 
-    public function __construct(array $server)
+    /**
+     * @var array
+     */
+    private $post;
+
+    public function __construct(array $server, array $post)
     {  
         $this->uri = $server['REQUEST_URI'];
         $this->method = $server['REQUEST_METHOD'];
+        $this->post = $post;
+    }
+
+    /**
+     * Returns true if a field with name _$name_ was sent otherwise false.
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function hasField (string $name): bool {
+        return isset($this->post[$name]);
+    }
+
+    /**
+     * Returns field with the name _$name_.
+     *
+     * @param string $name
+     * @return any
+     */
+    public function getField (string $name) {
+        if (!$this->hasField($name)) return null;
+
+        return $this->post[$name];
     }
 
     /**

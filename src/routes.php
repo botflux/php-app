@@ -2,6 +2,7 @@
 
 use App\Router\Request;
 use App\Router\Response;
+use App\Validation\Forms\ArticleForm;
 
 $app->get('/^\/$/', function (Request $request, Response $response) use ($app) {
     return $app->render('index.phtml', [
@@ -30,4 +31,22 @@ $app->get('/^\/products$/', function () use ($app) {
 
 $app->route('/^\/$/', function (Request $request, Response $response) use ($app) {
     return $app->render('about.phtml', []);
+});
+
+$app->route('/^\/form/', function (Request $request, Response $response) use ($app) {
+
+    $form = new ArticleForm();
+
+    if ($request->getMethod() === 'POST') {
+        
+        if ($form->isValid($request)) {
+            $message = 'Form ok';
+        } else {
+            $message = 'Form not ok';
+        }
+    }
+
+    return $app->render('form.phtml', [
+        'message' => $message ?? ''
+    ]);
 });

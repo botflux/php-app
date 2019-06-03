@@ -130,7 +130,7 @@ class Core {
      * @param array $context
      * @return void
      */
-    public function render (string $templateName, array $context) {
+    public function render (string $templateName, array $context = []) {
         return (new Response ())
             ->setHeader('Content-type', 'text/html; charset=utf8')
             ->setBody($this->serviceContainer['renderer']->render($templateName, $context))

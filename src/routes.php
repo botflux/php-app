@@ -50,3 +50,9 @@ $app->route('/^\/form/', function (Request $request, Response $response) use ($a
         'message' => $message ?? ''
     ]);
 });
+
+$app->get('/^\/hello\/(?<message>[A-Za-z]*)$/', function (Request $request, Response $response) use ($app) {
+    return $app->render('index.phtml', [
+        'message' => $request->getParam('message')
+    ]);
+});

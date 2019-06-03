@@ -26,6 +26,11 @@ class Request extends HttpBase {
      */
     private $get;
 
+    /**
+     * @var array
+     */
+    private $params;
+
     public function __construct(array $server, array $post, array $get)
     {  
         $this->uri = $server['REQUEST_URI'];
@@ -122,6 +127,32 @@ class Request extends HttpBase {
     {
         $this->method = $method;
 
+        return $this;
+    }
+
+    /**
+     * Returns the param named _$name_.
+     * 
+     * @param string $name
+     */
+    public function getParam (string $name) {
+        if (!$this->hasParam($name)) return null;
+
+        return $this->params[$name];
+    }
+
+    /**
+     * Returns true if there is a param named _$name_ is the URI.
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function hasParam (string $name): bool {
+        return isset($this->params[$name]);
+    }
+
+    public function setParams (array $params) {
+        $this->params = $params;
         return $this;
     }
 }

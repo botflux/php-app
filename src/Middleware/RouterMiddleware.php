@@ -37,9 +37,15 @@ class RouterMiddleware
             return $prev;
         }, null);
 
+
         if (!$matchingRoute) {
             throw new RouteNotFoundException (sprintf('No route matching %s %s', $request->getMethod (), $request->getUri ()));
         }
+
+        // finds the named regex in URI.
+        $matchs = [];
+        preg_match($matchingRoute->getRoute(), $request->getUri(), $matchs);
+        $request->setParams($matchs);
 
         return $matchingRoute->getCallback ()($request, $response);
     }

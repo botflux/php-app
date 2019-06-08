@@ -3,6 +3,7 @@
 namespace App\Renderer;
 
 use App\Renderer\Exception\TemplateNotFoundException;
+use App\Session\FlashMessage\Bag;
 
 /**
  * Application renderer
@@ -17,13 +18,21 @@ class Renderer
     private $templateFolder;
 
     /**
+     * Flash message bag
+     *
+     * @var Bag
+     */
+    private $bag;
+
+    /**
      * Initializes a new instance of _Renderer_
      *
      * @param string $templateFolder
      */
-    public function __construct(string $templateFolder)
+    public function __construct(string $templateFolder, Bag $bag)
     {
         $this->templateFolder = $templateFolder;
+        $this->bag = $bag;
     }
 
     /**
@@ -35,6 +44,7 @@ class Renderer
      */
     public function render (string $templateName, array $context = null): string {
         $templatePath = $this->templateFolder . DIRECTORY_SEPARATOR . $templateName;
+        $bag = $this->bag;
 
         if (!file_exists($templatePath)) {
             throw new TemplateNotFoundException("$templatePath was not found.");

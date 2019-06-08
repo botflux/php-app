@@ -74,7 +74,7 @@ class Request extends HttpBase {
      * Returns the get param with the name _$name_.
      *
      * @param string $name
-     * @return void
+     * @return mixed
      */
     public function getQueryParam (string $name) {
         if (!$this->hasQueryParam($name)) return null;

@@ -30,13 +30,12 @@ class RouterMiddleware
         
         // find the first route that matchs the request
         $matchingRoute = array_reduce($methodRelatedRoutes, function ($prev, Route $element) use ($request) {
-            if (preg_match($element->getRoute(), $request->getUri())) {
+            if (preg_match($element->getRoute(), $request->getUri()) && !$prev) {
                 return $element;
             }
 
             return $prev;
         }, null);
-
 
         if (!$matchingRoute) {
             throw new RouteNotFoundException (sprintf('No route matching %s %s', $request->getMethod (), $request->getUri ()));

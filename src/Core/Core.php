@@ -12,6 +12,8 @@ use App\Middleware\RouterMiddleware;
 
 /**
  * Application Core
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Core {
     /**

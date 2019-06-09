@@ -4,6 +4,8 @@ namespace App\Router;
 
 /**
  * Represents an HTTP Response
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Response extends HttpBase
 {

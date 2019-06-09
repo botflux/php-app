@@ -4,6 +4,8 @@ namespace App\Core;
 
 /**
  * Represents an application service
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Service {
     /**

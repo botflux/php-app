@@ -4,6 +4,8 @@ namespace App\Router;
 
 /**
  * Represents an HTTP Header
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Header {
     /**

@@ -9,6 +9,11 @@ use App\Validation\Types\Required;
 use App\Validation\Types\Phone;
 use App\Validation\Types\Length;
 
+/**
+ * Contact form validator
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
+ */
 class ContactForm extends BaseForm 
 {
     public function __construct()

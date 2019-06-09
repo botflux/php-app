@@ -4,6 +4,8 @@ namespace App\Router;
 
 /**
  * Represents a Route
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Route {
     /**

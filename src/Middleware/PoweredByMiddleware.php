@@ -7,6 +7,8 @@ use App\Router\Response;
 
 /**
  * Middleware that remove the X-Powered-By header from the response
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class PoweredByMiddleware
 {

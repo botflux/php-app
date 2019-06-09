@@ -7,6 +7,8 @@ use App\Router\Response;
 
 /**
  * Middleware dispatcher
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Dispatcher {
     /**

@@ -4,6 +4,8 @@ namespace App\Router;
 
 /**
  * Base class for Response and Request
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 abstract class HttpBase 
 {

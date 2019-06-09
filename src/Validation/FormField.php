@@ -4,6 +4,8 @@ namespace App\Validation;
 
 /**
  * A form field
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class FormField 
 {

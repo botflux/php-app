@@ -4,6 +4,11 @@ namespace App\Validation;
 
 use App\Router\Request;
 
+/**
+ * Base form class
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
+ */
 abstract class BaseForm
 {
     /**

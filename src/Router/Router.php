@@ -6,6 +6,8 @@ use App\Router\Exception\RouteNotFoundException;
 
 /**
  * Application router
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Router {
     /**

@@ -6,6 +6,8 @@ use App\Session\SessionHandler;
 
 /**
  * Flash message holder
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Bag 
 {

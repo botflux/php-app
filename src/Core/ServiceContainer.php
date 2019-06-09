@@ -4,6 +4,8 @@ namespace App\Core;
 
 /**
  * Application service container
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class ServiceContainer implements \ArrayAccess
 {

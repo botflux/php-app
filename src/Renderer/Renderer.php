@@ -7,6 +7,8 @@ use App\Session\FlashMessage\Bag;
 
 /**
  * Application renderer
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class Renderer
 {

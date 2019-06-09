@@ -9,6 +9,8 @@ use App\Router\Exception\RouteNotFoundException;
 
 /**
  * Router middleware
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class RouterMiddleware
 {
@@ -17,6 +19,11 @@ class RouterMiddleware
      */
     private $routes;
 
+    /**
+     * Initializes a new instance of _RouterMiddleware_ with the _Routes_.    
+     *
+     * @param Route[] $routes
+     */
     public function __construct(array $routes)
     {
         $this->routes = $routes;

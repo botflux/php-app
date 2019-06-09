@@ -2,6 +2,11 @@
 
 namespace App\Validation\Types;
 
+/**
+ * Validate a string size
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
+ */
 class Length
 {
     /**

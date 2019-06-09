@@ -4,6 +4,11 @@ namespace App\Mailing;
 
 use App\Session\FlashMessage\Bag;
 
+/**
+ * Mock mailing service
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
+ */
 class Mailing
 {
     /**

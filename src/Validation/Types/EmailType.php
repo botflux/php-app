@@ -4,6 +4,8 @@ namespace App\Validation\Types;
 
 /**
  * Check if email is valid
+ * 
+ * @author Victor Mendele <victor.mendele68@gmail.com>
  */
 class EmailType
 {
